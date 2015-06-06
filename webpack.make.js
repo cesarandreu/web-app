@@ -90,7 +90,6 @@ module.exports = function makeWebpackConfig (options) {
    * Loaders
    * Reference: http://webpack.github.io/docs/configuration.html#module-loaders
    * List: http://webpack.github.io/docs/list-of-loaders.html
-   *
    * This handles most of the magic responsible for converting modules
    */
 

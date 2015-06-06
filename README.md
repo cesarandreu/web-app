@@ -13,7 +13,7 @@ Reasonable starting point for building a web app.
 
 ## Installation
 
-Install [io.js](https://iojs.org/), my favored approach is using [Node Version Manager](https://github.com/creationix/nvm). (Tested with `iojs-v2.2.1` and `npm-v2.11.0`.)
+Install [io.js](https://iojs.org/), my favored approach is using [Node Version Manager](https://github.com/creationix/nvm).
 
 Clone the repo and change `origin` git remote.
 
