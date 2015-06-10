@@ -2,6 +2,7 @@
   "parser": "babel-eslint",
   "extends": "standard",
   "env": {
+    "browser": true,
     "mocha": true
   }
 }
