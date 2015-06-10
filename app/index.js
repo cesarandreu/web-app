@@ -13,8 +13,8 @@ if (process.env.NODE_ENV !== 'production') {
 
 log('creating application node')
 const applicationNode = document.createElement('div')
-applicationNode.setAttribute('id', 'application')
 applicationNode.className = 'application'
+applicationNode.id = 'application'
 
 log('adding application node to body')
 document.body.appendChild(applicationNode)
