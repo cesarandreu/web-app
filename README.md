@@ -9,6 +9,7 @@ Reasonable starting point for building a web app.
 * Development server with hot reload when possible and refresh otherwise
 * Production builds with cache busting and asset minification
 * Testing environment using karma to run tests and mocha as the framework
+* Code coverage when tests are run
 * No gulp and no grunt, just npm run-scripts
 
 ## Installation
