@@ -1,0 +1,8 @@
+language: node_js
+
+node_js:
+  - iojs
+
+env:
+  global:
+    - NODE_ENV=test
