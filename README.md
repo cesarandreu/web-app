@@ -4,8 +4,9 @@ Reasonable starting point for building a web app.
 
 ## Features
 
-* Reasonable webpack configuration starting point
-* JSX, ES6, and ES7 with babel.js
+* Heavily commented webpack configuration with reasonable defaults
+* JSX, ES6, and ES7 support with babel.js
+* Source maps included in all builds
 * Development server with hot reload when possible and refresh otherwise
 * Production builds with cache busting and asset minification
 * Testing environment using karma to run tests and mocha as the framework
