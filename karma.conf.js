@@ -3,7 +3,6 @@ var webpackConfig = require('./webpack.test')
 // Reference: http://karma-runner.github.io/0.12/config/configuration-file.html
 module.exports = function karmaConfig (config) {
   config.set({
-
     frameworks: [
       // Reference: https://github.com/karma-runner/karma-mocha
       // Set framework to mocha
