@@ -39,13 +39,6 @@ module.exports = function karmaConfig (config) {
 
     singleRun: true,
 
-    plugins: [
-      require('karma-mocha'),
-      require('karma-webpack'),
-      require('karma-spec-reporter'),
-      require('karma-sourcemap-loader'),
-      require('karma-phantomjs-launcher')
-    ],
 
     webpack: webpackConfig
   })
