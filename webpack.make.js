@@ -95,6 +95,7 @@ module.exports = function makeWebpackConfig (options) {
 
   // Initialize module
   config.module = {
+    preLoaders: [],
     loaders: [{
       // JS LOADER
       // Reference: https://github.com/babel/babel-loader
@@ -113,6 +114,21 @@ module.exports = function makeWebpackConfig (options) {
       test: /\.(png|jpg|jpeg|gif|svg|woff|ttf|eot)$/,
       loader: 'file'
     }]
+  }
+
+  // ISPARTA LOADER
+  // Reference: https://github.com/ColCh/isparta-instrumenter-loader
+  // Instrument JS files with Isparta for subsequent code coverage reporting
+  // Skips node_modules and files that end with .test.js and .test.jsx
+  if (TEST) {
+    config.module.preLoaders.push({
+      test: /\.(js|jsx)$/,
+      exclude: [
+        /node_modules/,
+        /\.test\.(js|jsx)$/
+      ],
+      loader: 'isparta-instrumenter'
+    })
   }
 
   // JSX LOADER
