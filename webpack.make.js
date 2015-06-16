@@ -140,7 +140,7 @@ module.exports = function makeWebpackConfig (options) {
   }
 
   // Add react-hot-loader when not in build or test mode
-  if (BUILD || TEST) {
+  if (!BUILD && !TEST) {
     // Reference: https://github.com/gaearon/react-hot-loader
     // This will reload react components without refresh
     jsxLoader.loader = 'react-hot!' + jsxLoader.loader
