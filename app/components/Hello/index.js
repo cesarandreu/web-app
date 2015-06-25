@@ -1,1 +1,1 @@
-module.exports = require('./Hello')
+export default from './Hello'

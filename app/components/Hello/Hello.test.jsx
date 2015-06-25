@@ -1,8 +1,9 @@
+import React, { addons } from 'react/addons'
+import expect from 'expect.js'
+import Hello from './Hello'
+
 const { describe, it } = global
-const React = require('react/addons')
-const expect = require('expect.js')
-const Hello = require('./Hello')
-const {TestUtils} = React.addons
+const { TestUtils } = addons
 
 describe('Component: Hello', () => {
   it('has hello class', () => {

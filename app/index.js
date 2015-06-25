@@ -1,9 +1,10 @@
-require('normalize.css')
-require('./styles.css')
+import 'normalize.css'
+import './styles.css'
 
-const debug = require('debug')
-const React = require('react')
-const Hello = require('./components/Hello')
+import debug from 'debug'
+import React from 'react'
+import Hello from './components/Hello'
+
 const log = debug('application:bootstrap')
 
 // Enable debug messages outside of production

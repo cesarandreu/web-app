@@ -1,5 +1,5 @@
-require('./Hello.css')
-const React = require('react')
+import './Hello.css'
+import React, { PropTypes } from 'react'
 
 /**
  * A component to greet users
@@ -9,7 +9,7 @@ const Hello = React.createClass({
     /**
      * Name of the user to greet
      */
-    name: React.PropTypes.string
+    name: PropTypes.string
   },
 
   getDefaultProps () {
@@ -28,4 +28,4 @@ const Hello = React.createClass({
   }
 })
 
-module.exports = Hello
+export default Hello
