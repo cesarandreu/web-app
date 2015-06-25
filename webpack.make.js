@@ -180,11 +180,13 @@ module.exports = function makeWebpackConfig (options) {
    * Reference: https://github.com/postcss/autoprefixer-core
    * Add vendor prefixes to your css
    */
-  config.postcss = [
-    autoprefixer({
-      browsers: ['last 2 version']
-    })
-  ]
+  config.postcss = function postcss () {
+    return [
+      autoprefixer({
+        browsers: ['last 2 versions']
+      })
+    ]
+  }
 
   /**
    * Resolve
