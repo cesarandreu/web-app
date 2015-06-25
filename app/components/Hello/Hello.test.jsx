@@ -1,4 +1,4 @@
-const { describe, it } = require('mocha')
+const { describe, it } = global
 const React = require('react/addons')
 const expect = require('expect.js')
 const Hello = require('./Hello')
