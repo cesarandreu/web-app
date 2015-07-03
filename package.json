@@ -43,8 +43,7 @@
     "normalize.css": "^3.0.3",
     "postcss-loader": "^0.5.1",
     "react": "^0.13.3",
-    "webpack": "^1.10.1",
-    "webpack-dev-server": "^1.9.0"
+    "webpack": "^1.10.1"
   },
   "devDependencies": {
     "babel-eslint": "^3.1.20",
