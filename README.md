@@ -29,11 +29,14 @@ All scripts are run with `npm run [script]`, for example: `npm run test`.
 
 * `build` - generate a minified build to public folder
 * `dev` - start development server, try it by opening `http://localhost:8080/`
-* `test` - run all tests
+* `lint` - lint the project using [standard](https://github.com/feross/standard)
+* `test` - lint and run all tests
 * `test:unit` - run all unit tests
-* `test:unit:live` - continuously run unit tests watching for changes
+* `tdd` - continuously run unit tests watching for changes
 
 See what each script does by looking at the `scripts` section in [package.json](./package.json).
+
+**NOTE:** to generate a full production build you must run the build command with `NODE_ENV=production`.
 
 ## Linting
 

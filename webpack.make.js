@@ -1,6 +1,6 @@
 // Modules
 var webpack = require('webpack')
-var autoprefixer = require('autoprefixer-core')
+var autoprefixer = require('autoprefixer')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 
@@ -149,44 +149,50 @@ module.exports = function makeWebpackConfig (options) {
   // Add jsxLoader to the loader list
   config.module.loaders.push(jsxLoader)
 
-  // CSS LOADER
+  // LOCAL CSS LOADER
+
+  // Identifier name for local css modules
+  // Reference: https://github.com/webpack/css-loader#local-scope
+  // More info: https://github.com/css-modules/css-modules
+  const localIdentName = BUILD ? '[hash:base64]' : '[path][name]---[local]---[hash:base64:5]'
+
   // Reference: https://github.com/webpack/css-loader
-  // Allow loading css through js
-  //
-  // Reference: https://github.com/postcss/postcss-loader
-  // Postprocess your css with PostCSS plugins
-  var cssLoader = {
+  // Allow loading css through js and getting the className
+  var localCssLoader = {
     test: /\.css$/,
+    include: __dirname + '/app',
     // Reference: https://github.com/webpack/extract-text-webpack-plugin
     // Extract css files in production builds
-    //
-    // Reference: https://github.com/webpack/style-loader
-    // Use style-loader in development for hot-loading
+    loader: ExtractTextPlugin.extract(
+      // Reference: https://github.com/webpack/style-loader
+      // Use style-loader in development for hot-loading
+      'style',
+
+      // Reference: https://github.com/postcss/postcss-loader
+      // Postprocess your css with PostCSS plugins
+      'css?modules&sourceMap&localIdentName=' + localIdentName + '!postcss'
+    )
+  }
+
+  // GLOBAL CSS LOADER
+  // The same as localCssLoader, but imports are globals
+  var globalCssLoader = {
+    test: /\.css$/,
+    include: __dirname + '/node_modules',
     loader: ExtractTextPlugin.extract('style', 'css?sourceMap!postcss')
   }
 
-  // Skip loading css in test mode
-  if (TEST) {
-    // Reference: https://github.com/webpack/null-loader
-    // Return an empty module
-    cssLoader.loader = 'null'
-  }
-
-  // Add cssLoader to the loader list
-  config.module.loaders.push(cssLoader)
+  // Add localCssLoader and globalCssLoader to the loader list
+  config.module.loaders.push(localCssLoader, globalCssLoader)
 
   /**
    * PostCSS
    * Reference: https://github.com/postcss/autoprefixer-core
    * Add vendor prefixes to your css
    */
-  config.postcss = function postcss () {
-    return [
-      autoprefixer({
-        browsers: ['last 2 versions']
-      })
-    ]
-  }
+  config.postcss = [
+    autoprefixer({ browsers: ['last 2 versions'] })
+  ]
 
   /**
    * Resolve

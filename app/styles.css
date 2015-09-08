@@ -1,16 +1,16 @@
-*,
-*:after,
-*:before {
+:global *,
+:global *:after,
+:global *:before {
   box-sizing: border-box;
 }
 
-html,
-body {
+:global html,
+:global body {
   width: 100%;
   height: 100%;
 }
 
-.application {
+.app {
   width: 100%;
   height: 100%;
   display: flex;
