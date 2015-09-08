@@ -7,7 +7,8 @@
   "scripts": {
     "build": "webpack --config webpack.build.js --bail -p",
     "dev": "webpack-dev-server --history-api-fallback --hot --inline --progress",
-    "test": "npm run test:unit",
+    "lint": "standard",
+    "test": "npm run lint && npm run test:unit",
     "test:unit": "karma start",
     "tdd": "karma start --auto-watch --no-single-run"
   },

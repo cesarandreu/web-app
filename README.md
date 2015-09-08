@@ -30,6 +30,7 @@ All scripts are run with `npm run [script]`, for example: `npm run test`.
 * `build` - generate a minified build to public folder
 * `dev` - start development server, try it by opening `http://localhost:8080/`
 * `test` - run all tests
+* `lint` - lint the project using [standard](https://github.com/feross/standard)
 * `test:unit` - run all unit tests
 * `tdd` - continuously run unit tests watching for changes
 
