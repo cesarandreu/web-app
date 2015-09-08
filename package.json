@@ -64,7 +64,6 @@
     "karma-webpack": "^1.7.0",
     "mocha": "^2.3.2",
     "node-libs-browser": "^0.5.2",
-    "null-loader": "^0.1.1",
     "phantomjs": "^1.9.18",
     "phantomjs-polyfill": "0.0.1",
     "postcss-loader": "^0.6.0",

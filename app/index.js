@@ -3,7 +3,7 @@
  * Creates and inserts a div and mounts the app on it
  */
 import 'normalize.css'
-import './styles.css'
+import styles from './styles.css'
 
 import debug from 'debug'
 import React from 'react'
@@ -18,7 +18,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 log('creating app node')
 const appNode = document.createElement('div')
-appNode.className = 'app'
+appNode.className = styles.app
 appNode.id = 'app'
 
 log('adding app node to body')
