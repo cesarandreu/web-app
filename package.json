@@ -9,7 +9,7 @@
     "dev": "webpack-dev-server --history-api-fallback --hot --inline --progress",
     "test": "npm run test:unit",
     "test:unit": "karma start",
-    "test:unit:live": "karma start --auto-watch --no-single-run"
+    "tdd": "karma start --auto-watch --no-single-run"
   },
   "repository": {
     "type": "git",

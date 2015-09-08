@@ -31,7 +31,7 @@ All scripts are run with `npm run [script]`, for example: `npm run test`.
 * `dev` - start development server, try it by opening `http://localhost:8080/`
 * `test` - run all tests
 * `test:unit` - run all unit tests
-* `test:unit:live` - continuously run unit tests watching for changes
+* `tdd` - continuously run unit tests watching for changes
 
 See what each script does by looking at the `scripts` section in [package.json](./package.json).
 
