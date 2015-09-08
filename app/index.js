@@ -1,3 +1,7 @@
+/**
+ * App's entry point
+ * Creates and inserts a div and mounts the app on it
+ */
 import 'normalize.css'
 import './styles.css'
 
