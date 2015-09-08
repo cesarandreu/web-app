@@ -5,22 +5,22 @@ import debug from 'debug'
 import React from 'react'
 import Hello from './components/Hello'
 
-const log = debug('application:bootstrap')
+const log = debug('app:bootstrap')
 
 // Enable debug messages outside of production
 if (process.env.NODE_ENV !== 'production') {
-  debug.enable('application:*')
+  debug.enable('app:*')
 }
 
-log('creating application node')
-const applicationNode = document.createElement('div')
-applicationNode.className = 'application'
-applicationNode.id = 'application'
+log('creating app node')
+const appNode = document.createElement('div')
+appNode.className = 'app'
+appNode.id = 'app'
 
-log('adding application node to body')
-document.body.appendChild(applicationNode)
+log('adding app node to body')
+document.body.appendChild(appNode)
 
-log('mounting application')
-React.render(<Hello/>, applicationNode, () => {
-  log('finished mounting application')
+log('mounting app')
+React.render(<Hello/>, appNode, () => {
+  log('finished mounting app')
 })
