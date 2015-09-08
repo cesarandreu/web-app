@@ -36,6 +36,8 @@ All scripts are run with `npm run [script]`, for example: `npm run test`.
 
 See what each script does by looking at the `scripts` section in [package.json](./package.json).
 
+**NOTE:** to generate a full production build you must run the build command with `NODE_ENV=production`.
+
 ## Linting
 
 Use [standard](https://github.com/feross/standard) for linting. It has [editor plugins](https://github.com/feross/standard#editor-plugins).
