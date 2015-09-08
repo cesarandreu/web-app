@@ -1,6 +1,6 @@
 // Modules
 var webpack = require('webpack')
-var autoprefixer = require('autoprefixer-core')
+var autoprefixer = require('autoprefixer')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 
@@ -180,13 +180,9 @@ module.exports = function makeWebpackConfig (options) {
    * Reference: https://github.com/postcss/autoprefixer-core
    * Add vendor prefixes to your css
    */
-  config.postcss = function postcss () {
-    return [
-      autoprefixer({
-        browsers: ['last 2 versions']
-      })
-    ]
-  }
+  config.postcss = [
+    { browsers: ['last 2 versions'] }
+  ]
 
   /**
    * Resolve
