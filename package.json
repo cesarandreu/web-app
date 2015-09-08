@@ -27,6 +27,9 @@
   "standard": {
     "parser": "babel-eslint"
   },
+  "babel": {
+    "stage": 1
+  },
   "homepage": "https://github.com/cesarandreu/web-app#readme",
   "dependencies": {
     "autoprefixer-core": "^5.2.1",
