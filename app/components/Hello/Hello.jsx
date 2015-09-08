@@ -1,22 +1,20 @@
 import './Hello.css'
-import React, { PropTypes } from 'react'
+import React, { Component, PropTypes } from 'react'
 
 /**
  * A component to greet users
  */
-const Hello = React.createClass({
-  propTypes: {
+export default class Hello extends Component {
+  static propTypes = {
     /**
      * Name of the user to greet
      */
     name: PropTypes.string
-  },
+  }
 
-  getDefaultProps () {
-    return {
-      name: 'World'
-    }
-  },
+  static defaultProps = {
+    name: 'World'
+  }
 
   render () {
     const {name} = this.props
@@ -26,6 +24,4 @@ const Hello = React.createClass({
       </h1>
     )
   }
-})
-
-export default Hello
+}
