@@ -1,5 +1,3 @@
-var webpackConfig = require('./webpack.test')
-
 // Reference: http://karma-runner.github.io/0.12/config/configuration-file.html
 module.exports = function karmaConfig (config) {
   config.set({
@@ -48,6 +46,7 @@ module.exports = function karmaConfig (config) {
       type: 'html'
     },
 
-    webpack: webpackConfig
+    // Test webpack config
+    webpack: require('./webpack.test')
   })
 }
