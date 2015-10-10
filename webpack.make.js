@@ -97,14 +97,6 @@ module.exports = function makeWebpackConfig (options) {
   config.module = {
     preLoaders: [],
     loaders: [{
-      // JS LOADER
-      // Reference: https://github.com/babel/babel-loader
-      // Transpile .js files using babel-loader
-      // Compiles ES6 and ES7 into ES5 code
-      test: /\.js$/,
-      loader: 'babel?optional[]=runtime',
-      exclude: /node_modules/
-    }, {
       // ASSET LOADER
       // Reference: https://github.com/webpack/file-loader
       // Copy png, jpg, jpeg, gif, svg, woff, ttf, eot files to output
@@ -122,32 +114,55 @@ module.exports = function makeWebpackConfig (options) {
   // Skips node_modules and files that end with .test.js and .test.jsx
   if (TEST) {
     config.module.preLoaders.push({
-      test: /\.(js|jsx)$/,
+      test: /\.js$/,
       exclude: [
         /node_modules/,
-        /\.test\.(js|jsx)$/
+        /\.test\.js$/
       ],
       loader: 'isparta-instrumenter'
     })
   }
 
-  // JSX LOADER
-  // Transpile .jsx files using babel-loader
-  var jsxLoader = {
-    test: /\.jsx$/,
-    loader: 'babel?optional[]=runtime',
-    exclude: /node_modules/
+  // JS LOADER
+  // Reference: https://github.com/babel/babel-loader
+  // Transpile .js files using babel-loader
+  // Compiles ES6 and ES7 into ES5 code
+  var jsLoader = {
+    test: /\.js$/,
+    exclude: /node_modules/,
+    loader: 'babel',
+
+    query: {
+      extra: {},
+      plugins: [],
+      optional: ['runtime']
+    }
   }
 
-  // Add react-hot-loader when not in build or test mode
+  // Add babel-plugin-react-transform when not in build or test mode
+  // Reference: https://github.com/gaearon/babel-plugin-react-transform
   if (!BUILD && !TEST) {
-    // Reference: https://github.com/gaearon/react-hot-loader
-    // This will reload react components without refresh
-    jsxLoader.loader = 'react-hot!' + jsxLoader.loader
+    jsLoader.query.plugins.push('react-transform')
+    jsLoader.query.extra['react-transform'] = {
+      transforms: [{
+
+        // Enable automatic hot reload of react components
+        // Reference: https://github.com/gaearon/react-transform-catch-errors
+        transform: 'react-transform-hmr',
+        imports: ['react'],
+        locals: ['module']
+      }, {
+
+        // Catch errors inside of react component render function and show a screen
+        // Reference: https://github.com/gaearon/react-transform-catch-errors
+        transform: 'react-transform-catch-errors',
+        imports: ['react', 'redbox-react']
+      }]
+    }
   }
 
-  // Add jsxLoader to the loader list
-  config.module.loaders.push(jsxLoader)
+  // Add jsLoader to the loader list
+  config.module.loaders.push(jsLoader)
 
   // LOCAL CSS LOADER
 
