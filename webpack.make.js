@@ -233,8 +233,7 @@ module.exports = function makeWebpackConfig (options) {
     // Render index.html
     config.plugins.push(
       new HtmlWebpackPlugin({
-        title: 'Web application',
-        minify: BUILD
+        title: 'Web application'
       })
     )
   }
