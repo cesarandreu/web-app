@@ -7,6 +7,7 @@ import styles from './styles.css'
 
 import debug from 'debug'
 import React from 'react'
+import ReactDOM from 'react-dom'
 import Hello from './components/Hello'
 
 const log = debug('app:bootstrap')
@@ -25,6 +26,6 @@ log('adding app node to body')
 document.body.appendChild(appNode)
 
 log('mounting app')
-React.render(<Hello/>, appNode, () => {
+ReactDOM.render(<Hello/>, appNode, () => {
   log('finished mounting app')
 })

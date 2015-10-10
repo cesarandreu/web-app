@@ -1,9 +1,9 @@
-import React, { addons } from 'react/addons'
-import expect from 'expect.js'
+import React from 'react'
 import Hello from './Hello'
+import expect from 'expect.js'
+import TestUtils from 'react-addons-test-utils'
 
 const { describe, it } = global
-const { TestUtils } = addons
 
 /**
  * Render Hello component with param props and return the output
