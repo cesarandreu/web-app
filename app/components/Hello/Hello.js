@@ -19,7 +19,7 @@ export default class Hello extends Component {
   render () {
     const {name} = this.props
     return (
-      <h1 className={cn.hello}>
+      <h1 className={cn.greeting}>
         Hello {name}!
       </h1>
     )

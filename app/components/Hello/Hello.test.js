@@ -15,9 +15,9 @@ function renderHello (props = {}) {
 }
 
 describe('Component: Hello', () => {
-  it('renders an h1 with hello className', () => {
+  it('renders an h1 with greeting className', () => {
     const { props, type } = renderHello()
-    expect(props.className).to.contain('hello')
+    expect(props.className).to.contain('greeting')
     expect(type).to.equal('h1')
   })
 
