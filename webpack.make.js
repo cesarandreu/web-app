@@ -197,18 +197,6 @@ module.exports = function makeWebpackConfig (options) {
   ]
 
   /**
-   * Resolve
-   * Reference: http://webpack.github.io/docs/configuration.html#resolve
-   * Use this to tweak how webpack should handle module resolution
-   */
-  config.resolve = {
-    // Reference: http://webpack.github.io/docs/configuration.html#resolve-extensions
-    // Allows you to require files that end with .jsx without typing it
-    // For example, if you have file.jsx, you can type: require('./file')
-    extensions: ['', '.js', '.jsx']
-  }
-
-  /**
    * Plugins
    * Reference: http://webpack.github.io/docs/configuration.html#plugins
    * List: http://webpack.github.io/docs/list-of-plugins.html
