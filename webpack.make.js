@@ -6,10 +6,10 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 /**
  * Make webpack config
- * @param {object} options Builder options
+ * @param {Object} options Builder options
  * @param {boolean} options.TEST Generate a test config
  * @param {boolean} options.BUILD Generate a build config
- * @returns {object} Webpack configuration object
+ * @returns {Object} Webpack configuration object
  */
 module.exports = function makeWebpackConfig (options) {
   /**
@@ -154,7 +154,9 @@ module.exports = function makeWebpackConfig (options) {
   // Identifier name for local css modules
   // Reference: https://github.com/webpack/css-loader#local-scope
   // More info: https://github.com/css-modules/css-modules
-  const localIdentName = BUILD ? '[hash:base64]' : '[path][name]---[local]---[hash:base64:5]'
+  const localIdentName = BUILD
+    ? '[hash:base64]'
+    : '[path][name]---[local]---[hash:base64:5]'
 
   // Reference: https://github.com/webpack/css-loader
   // Allow loading css through js and getting the className
