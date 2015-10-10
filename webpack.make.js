@@ -6,10 +6,10 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 /**
  * Make webpack config
- * @param {object} options Builder options
+ * @param {Object} options Builder options
  * @param {boolean} options.TEST Generate a test config
  * @param {boolean} options.BUILD Generate a build config
- * @returns {object} Webpack configuration object
+ * @returns {Object} Webpack configuration object
  */
 module.exports = function makeWebpackConfig (options) {
   /**
@@ -97,14 +97,6 @@ module.exports = function makeWebpackConfig (options) {
   config.module = {
     preLoaders: [],
     loaders: [{
-      // JS LOADER
-      // Reference: https://github.com/babel/babel-loader
-      // Transpile .js files using babel-loader
-      // Compiles ES6 and ES7 into ES5 code
-      test: /\.js$/,
-      loader: 'babel?optional[]=runtime',
-      exclude: /node_modules/
-    }, {
       // ASSET LOADER
       // Reference: https://github.com/webpack/file-loader
       // Copy png, jpg, jpeg, gif, svg, woff, ttf, eot files to output
@@ -122,39 +114,64 @@ module.exports = function makeWebpackConfig (options) {
   // Skips node_modules and files that end with .test.js and .test.jsx
   if (TEST) {
     config.module.preLoaders.push({
-      test: /\.(js|jsx)$/,
+      test: /\.js$/,
       exclude: [
         /node_modules/,
-        /\.test\.(js|jsx)$/
+        /\.test\.js$/
       ],
       loader: 'isparta-instrumenter'
     })
   }
 
-  // JSX LOADER
-  // Transpile .jsx files using babel-loader
-  var jsxLoader = {
-    test: /\.jsx$/,
-    loader: 'babel?optional[]=runtime',
-    exclude: /node_modules/
+  // JS LOADER
+  // Reference: https://github.com/babel/babel-loader
+  // Transpile .js files using babel-loader
+  // Compiles ES6 and ES7 into ES5 code
+  var jsLoader = {
+    test: /\.js$/,
+    exclude: /node_modules/,
+    loader: 'babel',
+
+    query: {
+      extra: {},
+      plugins: [],
+      optional: ['runtime']
+    }
   }
 
-  // Add react-hot-loader when not in build or test mode
+  // Add babel-plugin-react-transform when not in build or test mode
+  // Reference: https://github.com/gaearon/babel-plugin-react-transform
   if (!BUILD && !TEST) {
-    // Reference: https://github.com/gaearon/react-hot-loader
-    // This will reload react components without refresh
-    jsxLoader.loader = 'react-hot!' + jsxLoader.loader
+    jsLoader.query.plugins.push('react-transform')
+    jsLoader.query.extra['react-transform'] = {
+      transforms: [{
+
+        // Enable automatic hot reload of react components
+        // Reference: https://github.com/gaearon/react-transform-catch-errors
+        transform: 'react-transform-hmr',
+        imports: ['react'],
+        locals: ['module']
+      }, {
+
+        // Catch errors inside of react component render function and show a screen
+        // Reference: https://github.com/gaearon/react-transform-catch-errors
+        transform: 'react-transform-catch-errors',
+        imports: ['react', 'redbox-react']
+      }]
+    }
   }
 
-  // Add jsxLoader to the loader list
-  config.module.loaders.push(jsxLoader)
+  // Add jsLoader to the loader list
+  config.module.loaders.push(jsLoader)
 
   // LOCAL CSS LOADER
 
   // Identifier name for local css modules
   // Reference: https://github.com/webpack/css-loader#local-scope
   // More info: https://github.com/css-modules/css-modules
-  const localIdentName = BUILD ? '[hash:base64]' : '[path][name]---[local]---[hash:base64:5]'
+  const localIdentName = BUILD
+    ? '[hash:base64]'
+    : '[path][name]---[local]---[hash:base64:5]'
 
   // Reference: https://github.com/webpack/css-loader
   // Allow loading css through js and getting the className
@@ -195,18 +212,6 @@ module.exports = function makeWebpackConfig (options) {
   ]
 
   /**
-   * Resolve
-   * Reference: http://webpack.github.io/docs/configuration.html#resolve
-   * Use this to tweak how webpack should handle module resolution
-   */
-  config.resolve = {
-    // Reference: http://webpack.github.io/docs/configuration.html#resolve-extensions
-    // Allows you to require files that end with .jsx without typing it
-    // For example, if you have file.jsx, you can type: require('./file')
-    extensions: ['', '.js', '.jsx']
-  }
-
-  /**
    * Plugins
    * Reference: http://webpack.github.io/docs/configuration.html#plugins
    * List: http://webpack.github.io/docs/list-of-plugins.html
@@ -233,8 +238,7 @@ module.exports = function makeWebpackConfig (options) {
     // Render index.html
     config.plugins.push(
       new HtmlWebpackPlugin({
-        title: 'Web application',
-        minify: BUILD
+        title: 'Web application'
       })
     )
   }

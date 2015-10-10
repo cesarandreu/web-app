@@ -23,14 +23,14 @@ module.exports = function karmaConfig (config) {
       'node_modules/phantomjs-polyfill/bind-polyfill.js',
 
       // Grab all files in the app folder that contain .test.
-      'app/**/*.test.*'
+      'app/**/*.test.js'
     ],
 
     preprocessors: {
       // Reference: http://webpack.github.io/docs/testing.html
       // Reference: https://github.com/webpack/karma-webpack
       // Convert files with webpack and load sourcemaps
-      'app/**/*.test.*': ['webpack', 'sourcemap']
+      'app/**/*.test.js': ['webpack', 'sourcemap']
     },
 
     browsers: [

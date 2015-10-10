@@ -7,7 +7,7 @@ cache:
     - node_modules
 
 node_js:
-  - iojs
+  - "4.1"
 
 env:
   global:
