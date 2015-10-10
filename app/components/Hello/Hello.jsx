@@ -1,4 +1,4 @@
-import classNames from './Hello.css'
+import cn from './Hello.css'
 import React, { Component, PropTypes } from 'react'
 
 /**
@@ -19,7 +19,7 @@ export default class Hello extends Component {
   render () {
     const {name} = this.props
     return (
-      <h1 className={classNames.hello}>
+      <h1 className={cn.hello}>
         Hello {name}!
       </h1>
     )
