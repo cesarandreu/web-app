@@ -147,7 +147,7 @@ module.exports = function makeWebpackConfig (options) {
       transforms: [{
 
         // Enable automatic hot reload of react components
-        // Reference: https://github.com/gaearon/react-transform-catch-errors
+        // Reference: https://github.com/gaearon/react-transform-hmr
         transform: 'react-transform-hmr',
         imports: ['react'],
         locals: ['module']
