@@ -6,7 +6,6 @@ import 'normalize.css'
 import styles from './styles.css'
 
 import debug from 'debug'
-import React from 'react'
 import ReactDOM from 'react-dom'
 import Hello from './components/Hello'
 
