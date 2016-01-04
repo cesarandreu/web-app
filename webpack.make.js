@@ -3,6 +3,7 @@ var webpack = require('webpack')
 var autoprefixer = require('autoprefixer')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
+var path = require('path')
 
 /**
  * Make webpack config
@@ -57,7 +58,7 @@ module.exports = function makeWebpackConfig (options) {
   } else {
     config.output = {
       // Absolute output directory
-      path: __dirname + '/public',
+      path: path.join(__dirname, 'public'),
 
       // Output path from the view of the page
       // Uses webpack-dev-server in development
@@ -177,7 +178,7 @@ module.exports = function makeWebpackConfig (options) {
   // Allow loading css through js and getting the className
   var localCssLoader = {
     test: /\.css$/,
-    include: __dirname + '/app',
+    include: path.join(__dirname, 'app'),
     // Reference: https://github.com/webpack/extract-text-webpack-plugin
     // Extract css files in production builds
     loader: ExtractTextPlugin.extract(
@@ -195,7 +196,7 @@ module.exports = function makeWebpackConfig (options) {
   // The same as localCssLoader, but imports are globals
   var globalCssLoader = {
     test: /\.css$/,
-    include: __dirname + '/node_modules',
+    include: path.join(__dirname, 'node_modules'),
     loader: ExtractTextPlugin.extract('style', 'css?sourceMap!postcss')
   }
 
